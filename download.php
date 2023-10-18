@@ -18,25 +18,36 @@ $format = $data->format;
 switch ($format) {
     case "mp4":
     case "webm":
-      //  $command = "$ytDlpPath -o 'downloads/%(title)s.%(ext)s' --format $format $youtubeLink 2>&1";
+        $command = "$ytDlpPath -o 'downloads/%(title)s.%(ext)s' --format $format $youtubeLink 2>&1";
         break;
     case "mp3":
     case "m4a":
-       $command = "$ytDlpPath --extract-audio --audio-format $format -o 'downloads/%(title)s.%(ext)s' $youtubeLink";
-       $shellCommand = "./download.sh " . escapeshellarg($youtubeLink) . " " . escapeshellarg($format);
-
+        $command = "$ytDlpPath --extract-audio --audio-format $format -o 'downloads/%(title)s.%(ext)s' $youtubeLink";
+        break;
+    default:
+        print("Don't mess with my html!");
+        exit();
 }
 
-echo "Link: " . $youtubeLink . "\n";
-echo "Format: " . $format . "\n";
-echo "Command: " . $command . "\n";
-echo "ShellCommand: " . $shellCommand . "\n";
+exec($command, $output, $exitCode);
+if ($exitCode == 0) {
 
-//exec($command, $output, $exitCode);
-$output = shell_exec($shellCommand);
+    foreach ($output as $line) {
 
-//echo "Exit-Code: " . $exitCode . "\n";
+        if (strpos($line, "." . $format)) {
+            $strpos = strpos($line, "downloads/");
+            $filename = substr($line, $strpos);
+            $filename = str_replace(" has already been downloaded", "", $filename);
+            $filename = str_replace(" file is already in target format " . $format, "", $filename);
+            print("/" . $filename);
+            touch($filename);
+            exit();
+        }
+    }
+}
 
-print($output);
+print("Download Failed. \n");
+print_r($output);
+
 
 ?>

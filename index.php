@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Website to download YouTube Videos">
     <meta name="author" content="YDavid">
-    <title>Pizzataxi</title>
+    <title>Downloader</title>
+    <link rel="stylesheet" href="styles.css">
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
     <!-- Bootstrap-->
@@ -30,12 +31,13 @@
     <div class="container px-lg-5">
         <div class="row">
             <div class="col-7">
-                <input type="text" class="form-control" id="youtubeLink" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="YouTube Link">
+                <input type="text" class="form-control" id="youtubeLink" aria-label="Large"
+                       aria-describedby="inputGroup-sizing-sm" placeholder="YouTube Link">
             </div>
             <div class="col-2">
                 <select class="form-control" id="format" aria-label="la">
                     <option value="mp4">MP4</option>
-                    <option value="webm">WEBM</option>
+                    <!--                    <option value="webm">WEBM</option>-->
                     <option value="mp3">MP3</option>
                     <option value="m4a">M4A</option>
                 </select>
@@ -44,12 +46,15 @@
                 <button class="btn btn-primary" onclick="startDownload()">Start Download</button>
 
             </div>
+            <video id="videoPlayer" controls></video>
+            <audio id="audioPlayer" controls></audio>
+
         </div>
     </div>
 </section>
 <!-- Footer-->
 <footer class="py-5 bg-dark mt-auto">
-    <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Pizzataxi 2022</p></div>
+    <div class="container"><p class="m-0 text-center text-white">Copyright &copy; YDavid 2023</p></div>
 </footer>
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
