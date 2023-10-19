@@ -26,7 +26,6 @@
         </div>
     </div>
 </header>
-
 <section class="pt-4">
     <div class="container px-lg-5">
         <div class="row">
@@ -46,10 +45,26 @@
                 <button class="btn btn-primary" onclick="startDownload()">Start Download</button>
 
             </div>
+            <!-- Loading Screen -->
+            <div id="loadingScreen" class="text-center">
+                <p>Loading...</p>
+            </div>
+
+            <!-- Error Screen -->
+            <div id="errorScreen" class="text-center">
+                <p>Error: Unable to download the media</p>
+            </div>
+        </div>
+        <h3 id="videoTitle"></h3>
+        <div class="row">
+
             <video id="videoPlayer" controls></video>
             <audio id="audioPlayer" controls></audio>
-
+            <a id="downloadLink" href="#" download>
+                <button class="btn btn-success">Download to Device</button>
+            </a>
         </div>
+    </div>
     </div>
 </section>
 <!-- Footer-->
