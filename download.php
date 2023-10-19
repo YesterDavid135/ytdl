@@ -15,14 +15,19 @@ $format = $data->format;
 
 // Use yt-dlp to download the video
 
+if (!filter_var($youtubeLink, FILTER_VALIDATE_URL)) {
+    echo "No Valid URL given";
+    exit();
+}
+
 switch ($format) {
     case "mp4":
     case "webm":
-        $command = "$ytDlpPath -o 'downloads/%(title)s.%(ext)s' --format $format $youtubeLink 2>&1";
+        $command = "$ytDlpPath -o 'downloads/%(title)s.%(ext)s' --format $format " . escapeshellarg($youtubeLink);
         break;
     case "mp3":
     case "m4a":
-        $command = "$ytDlpPath --extract-audio --audio-format $format -o 'downloads/%(title)s.%(ext)s' $youtubeLink";
+        $command = "$ytDlpPath --extract-audio --audio-format $format -o 'downloads/%(title)s.%(ext)s' " . escapeshellarg($youtubeLink);
         break;
     default:
         print("Don't mess with my html!");
@@ -47,7 +52,4 @@ if ($exitCode == 0) {
 }
 
 print("Download Failed. \n");
-print_r($output);
-
-
 ?>
