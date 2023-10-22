@@ -22,3 +22,18 @@
 #downloadLink {
     display: none;
 }
+
+/* Add padding between elements */
+.input-group {
+    margin-bottom: 10px;
+}
+
+/* Responsive design for mobile phones */
+@media (max-width: 767px) {
+    .input-group {
+        margin-bottom: 20px;
+    }
+    .input-group, #loadingScreen, #errorScreen {
+        width: 100%;
+    }
+}
