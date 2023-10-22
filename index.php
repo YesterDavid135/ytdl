@@ -41,6 +41,16 @@
                     <option value="m4a">M4A</option>
                 </select>
             </div>
+            <div class="col-2">
+                <select class="form-control" id="resolution" aria-label="la">
+                    <option value="best">Best Resolution</option>
+                    <option value="18">360p (SD)</option>
+                    <option value="22">720p (HD)</option>
+                    <option value="137+140">1080p (UHD)</option>
+                    <option value="264+140">2560p (QHD)</option>
+                    <option value="313+140">3840p (4k)</option>
+                </select>
+            </div>
             <div class="col-3">
                 <button class="btn btn-primary" onclick="startDownload()">Start Download</button>
 

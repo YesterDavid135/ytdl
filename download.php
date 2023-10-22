@@ -10,20 +10,34 @@ $data = json_decode(file_get_contents("php://input"));
 // Extract YouTube link and format
 $youtubeLink = $data->youtubeLink;
 $format = $data->format;
+$resolution = $data->resolution;
+$validFormats = [
+    '18',
+    '22',
+    '137+140',
+    '264+140',
+    '313+140',
+    'best',
+];
 
-// Validate input (e.g., check if the URL is valid)
+//Validate Resolution Input
+if (!in_array($resolution, $validFormats)) {
+    echo "Don't mess with my html!";
+    exit();
+}
 
-// Use yt-dlp to download the video
 
+// Validate input URL
 if (!filter_var($youtubeLink, FILTER_VALIDATE_URL)) {
     echo "No Valid URL given";
     exit();
 }
 
+//Prepare Download Command
 switch ($format) {
     case "mp4":
     case "webm":
-        $command = "$ytDlpPath -o 'downloads/%(title)s.%(ext)s' --format $format " . escapeshellarg($youtubeLink);
+        $command = "$ytDlpPath -o 'downloads/%(title)s" . $resolution . ".%(ext)s' --format $resolution " . escapeshellarg($youtubeLink);
         break;
     case "mp3":
     case "m4a":
@@ -34,22 +48,24 @@ switch ($format) {
         exit();
 }
 
+//Execute download command and download video
 exec($command, $output, $exitCode);
 if ($exitCode == 0) {
 
     foreach ($output as $line) {
-
+        //Get Video Name and relative url
         if (strpos($line, "." . $format)) {
             $strpos = strpos($line, "downloads/");
             $filename = substr($line, $strpos);
             $filename = str_replace(" has already been downloaded", "", $filename);
             $filename = str_replace(" file is already in target format " . $format, "", $filename);
+            $filename = str_replace("137+140.f137.mp4", "137+140.mp4", $filename);
             print("/" . $filename);
-            touch($filename);
+            touch($filename); //Update Timestamp for deletion
             exit();
         }
     }
 }
 
-print("Download Failed. \n");
+print("Download Failed or Requested resolution is not available. \n");
 ?>
