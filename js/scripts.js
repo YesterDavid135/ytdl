@@ -1,6 +1,7 @@
 function startDownload() {
     const youtubeLink = document.getElementById("youtubeLink").value;
     const selectedFormat = document.getElementById("format").value;
+    const selectedResolution = document.getElementById("resolution").value;
 
     // Define the video and audio elements
     const videoPlayer = document.getElementById("videoPlayer");
@@ -24,7 +25,7 @@ function startDownload() {
     // Make an AJAX request to your server to initiate the download
     fetch("/download.php", {
         method: "POST",
-        body: JSON.stringify({youtubeLink, format: selectedFormat}),
+        body: JSON.stringify({youtubeLink, format: selectedFormat, resolution: selectedResolution}),
         headers: {
             "Content-Type": "application/json",
         },
