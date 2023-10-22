@@ -69,7 +69,7 @@
                 <video id="videoPlayer" controls></video>
                 <audio id="audioPlayer" controls></audio>
                 <a id="downloadLink" class="btn btn-success" href="#" download>
-                    Download to Device</button>
+                    Download to Device
                 </a>
             </div>
         </div>
