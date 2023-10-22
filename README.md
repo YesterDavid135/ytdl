@@ -30,15 +30,18 @@ Follow these steps to install the YouTube downloader website:
 
 4. **Set the yt-dlp Path**
 
-   Rename [config.example.ini](config.example.ini) to config.ini and configure the correct path to the yt-dlp executable.
+   Rename [config.example.ini](config.example.ini) to config.ini and configure the correct path to the yt-dlp
+   executable.
 
 5. **Access the Site and have fun**
 
 ## Usage
 
-1. Enter the URL of a media file from platforms like YouTube, Tiktok, or other social media platforms.
-2. Select the desired file Format
-3. Click "Download"
-4. Wait for the Download to process
-5. Preview the File and Download it
+1. In the Input Field - Enter the URL of a media file from platforms like YouTube, Tiktok, or other social media
+   platforms.
+2. Select the desired file Format from the first Dropdown Menu
+3. Select the desired Resolution from the second Dropdown Menu
+4. Click "Download"
+5. Wait for the Download to process
+6. Preview the File and Download it
 
