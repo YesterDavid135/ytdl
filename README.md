@@ -1,2 +1,44 @@
-# ytdl
-Youtube Download Website using php and yt-dlp
+# YouTube Downloader Installation Guide
+
+This guide will help you set up your YouTube downloader website using PHP and yt-dlp on your web server. The website is
+hosted at yt.ydavid.ch and allows users to download YouTube videos by entering a link and selecting a video format.
+
+## Installation
+
+Follow these steps to install the YouTube downloader website:
+
+1. **Clone the Repository:**
+
+   Clone this repository to your web server using Git:
+
+   ```shell
+   git clone https://github.com/YesterDavid135/ytdl.git
+   ```
+
+2. **Install Web Server**
+
+   Install PHP and a Webserver like nginx or Apache on your Computer and start it
+
+
+3. **Install Required Libraries**
+
+   Install yt-dlp for downloading and FFmpeg for file conversion.
+
+   [yt-dlp Installation](https://github.com/yt-dlp/yt-dlp#installation) <br>
+   [fmmpeg Installation](https://ffmpeg.org/download.html)
+
+
+4. **Set the yt-dlp Path**
+
+   Rename [config.example.ini](config.example.ini) to config.ini and configure the correct path to the yt-dlp executable.
+
+5. **Access the Site and have fun**
+
+## Usage
+
+1. Enter the URL of a media file from platforms like YouTube, Tiktok, or other social media platforms.
+2. Select the desired file Format
+3. Click "Download"
+4. Wait for the Download to process
+5. Preview the File and Download it
+
